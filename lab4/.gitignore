@@ -1,0 +1,8 @@
+card_data.txt
+login_data.txt
+__pycache__/
+*.pyc
+venv/
+.venv/
+.DS_Store
+
