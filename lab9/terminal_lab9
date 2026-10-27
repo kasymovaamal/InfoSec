@@ -1,0 +1,17 @@
+amal@MacBook-Air-Amal-2 lab9 % docker run -it --name lab9 ubuntu bash
+root@583ddc409ddb:/# apt update
+root@583ddc409ddb:/# apt install -y nginx
+root@583ddc409ddb:/# apt search nginx
+root@583ddc409ddb:/# apt-cache depends nginx
+root@583ddc409ddb:/# service nginx start
+root@583ddc409ddb:/# service nginx status
+ * nginx is running
+root@583ddc409ddb:/# curl localhost
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+...
+root@583ddc409ddb:/# apt remove -y nginx
+root@583ddc409ddb:/# apt purge -y nginx
+root@583ddc409ddb:/# apt autoremove -y
