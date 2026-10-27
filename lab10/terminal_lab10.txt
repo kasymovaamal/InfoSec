@@ -1,0 +1,16 @@
+amal@MacBook-Air-Amal-2 lab10 % docker run -it --name lab10 ubuntu bash
+root@583ddc409ddb:/# apt update && apt install -y nginx
+root@583ddc409ddb:/# ln -s /etc/nginx/sites-available/my_site /etc/nginx/sites-enabled/
+root@583ddc409ddb:/# nginx -t
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+root@583ddc409ddb:/# service nginx start
+root@583ddc409ddb:/# curl localhost:8000
+<sample HTML content>
+root@583ddc409ddb:/# apt install -y python3 python3-pip
+root@583ddc409ddb:/# pip3 install flask --break-system-packages
+root@583ddc409ddb:/# curl localhost:5000/api/hello
+{"message":"Hello from the API!"}
+root@583ddc409ddb:/# nginx -t && service nginx reload
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+root@583ddc409ddb:/# curl localhost:8000/api/hello
+{"message":"Hello from the API!"}
