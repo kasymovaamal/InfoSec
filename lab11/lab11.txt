@@ -1,0 +1,19 @@
+amal@MacBook-Air-Amal-2 lab11 % docker run -it --name lab11 ubuntu bash
+root@583ddc409ddb:/# apt install -y python3 python3-pip python3-setuptools git make
+root@583ddc409ddb:/# git clone https://github.com/ytdl-org/youtube-dl.git
+root@583ddc409ddb:/# cd youtube-dl
+root@583ddc409ddb:/youtube-dl# python3 setup.py install
+root@583ddc409ddb:/youtube-dl# youtube-dl --version
+2025.4.7
+root@583ddc409ddb:/# git clone https://github.com/dylanaraps/neofetch.git
+root@583ddc409ddb:/# cd neofetch
+root@583ddc409ddb:/neofetch# make install
+root@583ddc409ddb:/neofetch# neofetch
+<ASCII art with system info>
+root@583ddc409ddb:/# git clone --depth 1 https://github.com/junegunn/fzf.git
+root@583ddc409ddb:/# cd fzf
+root@583ddc409ddb:/fzf# ./install
+root@583ddc409ddb:/fzf# ./bin/fzf --version
+0.46.1
+root@583ddc409ddb:/fzf# cp bin/fzf /usr/local/bin/
+root@583ddc409ddb:/fzf# find / -type f 2>/dev/null | fzf
