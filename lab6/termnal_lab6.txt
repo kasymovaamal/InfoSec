@@ -1,0 +1,21 @@
+amal@MacBook-Air-Amal-2 lab6 % docker run -it --name lab6 ubuntu bash
+root@583ddc409ddb:/# touch file.txt
+root@583ddc409ddb:/# ls -la file.txt
+-rw-r--r-- 1 root root 0 Sep 29 14:20 file.txt
+root@583ddc409ddb:/# chmod 754 file.txt
+root@583ddc409ddb:/# ls -la file.txt
+-rwxr-xr-- 1 root root 0 Sep 29 14:20 file.txt
+root@583ddc409ddb:/# chmod 077 file.txt
+root@583ddc409ddb:/# cat file.txt
+cat: file.txt: Permission denied
+root@583ddc409ddb:/# chmod 644 file.txt
+root@583ddc409ddb:/# chgrp staff file.txt
+root@583ddc409ddb:/# chown root file.txt
+root@583ddc409ddb:/# cat file.txt
+cat: file.txt: Permission denied
+root@583ddc409ddb:/# echo "test" >> file.txt
+bash: file.txt: Permission denied
+root@583ddc409ddb:/# chown amal file.txt
+root@583ddc409ddb:/# chown amal:staff file.txt
+root@583ddc409ddb:/# ls -la file.txt
+-rw-r--r-- 1 amal staff 0 Sep 29 14:21 file.txt
